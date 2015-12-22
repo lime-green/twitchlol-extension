@@ -81,3 +81,9 @@ button:hover {
     cursor: default;
 }
 
+hr {
+    text-align:center; margin: 0 auto;
+    margin-top: 15px;
+    width: 80%;
+    padding: 0;
+}

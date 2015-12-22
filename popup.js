@@ -15,16 +15,18 @@ function getCookie(details, success, failure) {
 
 function sendCookies(cookies) {
     $.post('http://127.0.0.1:8001/link', cookies).then(function (data) {
+        console.log(data);
         chrome.extension.sendMessage({command: 'setLink', link: data.link}, function(response) {
             addURL();
         });
 
         showSuccess(
-            'Successfully linked twitch user <span class="twitch-name"> ' +
-            data.twitch_name + '</span> to league user <span class="league-name"> ' +
+            'Successfully linked twitch user<span class="twitch-name">' +
+            data.twitch_name + '</span> to league user<span class="league-name">' +
             data.league_name
         );
-    }, function () {
+    }, function (data) {
+        console.log(data);
         showFailed('An error occurred.');
     }).always(function() {
         enableButton();
