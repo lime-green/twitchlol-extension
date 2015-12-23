@@ -87,3 +87,27 @@ hr {
     width: 80%;
     padding: 0;
 }
+
+#footer {
+    text-align: center;
+}
+
+.graphite-flat-button {
+    position: relative;
+    vertical-align: top;
+    padding: 5px;
+    font-size: 15px;
+    color:white;
+    text-align: center;
+    background: #454545;
+    border: 0;
+    border-bottom: 2px solid #2f2e2e;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.graphite-flat-button:active {
+    top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}

@@ -16,7 +16,8 @@ function getCookie(details, success, failure) {
 function sendCookies(cookies) {
     $.post('http://127.0.0.1:8001/link', cookies).then(function (data) {
         console.log(data);
-        chrome.extension.sendMessage({command: 'setLink', link: data.link}, function(response) {
+        chrome.extension.sendMessage({command: 'setLink', link: data.link, code: data.code}, function(response) {
+            console.log('code' + response);
             addURL();
         });
 
@@ -34,9 +35,10 @@ function sendCookies(cookies) {
 }
 
 function addURL() {
-    chrome.extension.sendMessage({command: 'getLink'}, function(url) {
-        if (url) {
-            $('#user-url').html('Your URL: <a target="parent" href=' + url +'>' + url + '</a>');
+    chrome.extension.sendMessage({command: 'getLink'}, function(hash) {
+        console.log(hash);
+        if (hash.link) {
+            $('#user-url').html('Your code: <a target="parent" href=' + hash.link +'>' + hash.code + '</a>');
         }
     });
 }
